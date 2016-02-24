@@ -21,6 +21,7 @@ defmodule LinkShortener do
   end
 
   def run do
-    {:ok, _} = Plug.Adapters.Cowboy.http(LinkShortener.Router, [])
+    cowboy_config = Application.get_env(:link_shortener, :http)
+    {:ok, _} = Plug.Adapters.Cowboy.http(LinkShortener.Router, cowboy_config)
   end
 end
