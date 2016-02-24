@@ -21,7 +21,12 @@ defmodule LinkShortener do
   end
 
   def run do
-    cowboy_config = Application.get_env(:link_shortener, :http)
-    {:ok, _} = Plug.Adapters.Cowboy.http(LinkShortener.Router, [], cowboy_config)
+    port = System.get_env("PORT")
+    |> get_port
+
+    {:ok, _} = Plug.Adapters.Cowboy.http(LinkShortener.Router, [], [port: port])
   end
+
+  defp get_port(nil), do: 4000
+  defp get_port(port) when is_binary(port), do: String.to_integer(port)
 end
