@@ -1,5 +1,5 @@
 defmodule LinkShortener.LinkDatabase do
-  @code_length 12
+  @code_length 8
   @con_cache_table :link_cache
 
   def get(code) do
