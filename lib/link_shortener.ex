@@ -1,0 +1,2 @@
+defmodule LinkShortener do
+end
