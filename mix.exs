@@ -14,7 +14,8 @@ defmodule LinkShortener.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :cowboy, :plug, :con_cache],
+    mod: {LinkShortener, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +30,8 @@ defmodule LinkShortener.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.0"},
-      {:plug, "~> 1.0"}
+      {:plug, "~> 1.0"},
+      {:con_cache, "~> 0.11.0"}
     ]
   end
 end
