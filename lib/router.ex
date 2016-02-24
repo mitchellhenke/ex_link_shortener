@@ -4,7 +4,7 @@ defmodule LinkShortener.Router do
   plug :match
   plug :dispatch
 
-  post "/get_code" do
+  post "/get_short_link" do
     {:ok, url, conn} = read_body(conn)
 
     code = LinkShortener.LinkDatabase.code(url)
