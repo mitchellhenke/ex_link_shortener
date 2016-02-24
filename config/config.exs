@@ -5,7 +5,7 @@ use Mix.Config
 config :link_shortener, base_url: System.get_env("BASE_URL") || "http://localhost:4000"
 
 config :link_shortener,
-  http: [port: "4000"]
+  http: [port: 4000]
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
