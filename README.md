@@ -2,7 +2,7 @@
 
 Simple link shortener using Plug.
 
-A POST to `/make_short_link` where the request body contains the link to be shortened will return a shortened link in the response body.
+A form POST to `/shorten_url` where the request body is url-encoded with a `url` key and a url in the value will return a shortened url in the body.
 
 Any GET requests to that link will hopefully redirect to the original link relatively quickly :)
 
