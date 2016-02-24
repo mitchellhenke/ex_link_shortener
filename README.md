@@ -1,20 +1,9 @@
 # LinkShortener
 
-**TODO: Add description**
+Simple link shortener using Plug.
 
-## Installation
+A POST to `/get_short_link` where the body contains the link to be shortened will return a shortened link in the body.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+Any GET requests to that link will hopefully redirect to the original link relatively quickly :)
 
-  1. Add link_shortener to your list of dependencies in `mix.exs`:
-
-        def deps do
-          [{:link_shortener, "~> 0.0.1"}]
-        end
-
-  2. Ensure link_shortener is started before your application:
-
-        def application do
-          [applications: [:link_shortener]]
-        end
-
+The link information is stored in ETS via [con_cache](https://github.com/sasa1977/con_cache).
