@@ -2,7 +2,7 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :link_shortener, base_url: "http://localhost:4000"
+config :link_shortener, base_url: System.get_env("BASE_URL") || "http://localhost:4000"
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
