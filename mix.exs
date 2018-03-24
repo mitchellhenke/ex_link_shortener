@@ -3,7 +3,7 @@ defmodule LinkShortener.Mixfile do
 
   def project do
     [app: :link_shortener,
-     version: "0.0.3",
+     version: "0.0.4",
      elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -14,7 +14,7 @@ defmodule LinkShortener.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :cowboy, :plug, :con_cache],
+    [applications: [:runtime_tools, :logger, :cowboy, :plug, :con_cache],
     mod: {LinkShortener, []}]
   end
 
