@@ -24,7 +24,7 @@ defmodule LinkShortener do
     port = System.get_env("PORT")
     |> get_port
 
-    {:ok, _} = Plug.Adapters.Cowboy.http(LinkShortener.Router, [], [port: port])
+    {:ok, _} = Plug.Adapters.Cowboy2.http(LinkShortener.Router, [], [port: port])
   end
 
   defp get_port(nil), do: 4000

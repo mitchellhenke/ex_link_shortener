@@ -14,6 +14,7 @@ defmodule LinkShortener.Router do
     LinkShortener.LinkDatabase.add_link(code, url)
 
     short_url = base_url <> "/#{code}"
+                |> make_anchor()
 
     send_resp(conn, 200, short_url)
   end
@@ -56,4 +57,9 @@ defmodule LinkShortener.Router do
 
   defp make_url("http" <> _rest = url), do: url
   defp make_url(url), do: "http://" <> url
+  defp make_anchor(url) do
+    """
+    <a href="#{url}">#{url}</a>
+    """
+  end
 end
