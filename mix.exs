@@ -32,6 +32,7 @@ defmodule LinkShortener.Mixfile do
       {:cowboy, "~> 1.0"},
       {:plug, "~> 1.0"},
       {:con_cache, "~> 0.12.0"},
+      {:distillery, "~> 1.5"}
     ]
   end
 end
