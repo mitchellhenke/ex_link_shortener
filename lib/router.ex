@@ -7,7 +7,7 @@ defmodule LinkShortener.Router do
 
   post "/shorten_url" do
     base_url = Application.get_env(:link_shortener, :base_url)
-    url = Dict.get(conn.params, "url", base_url)
+    url = Map.get(conn.params, "url", base_url)
     |> make_url
 
     code = LinkShortener.LinkDatabase.code(url)
@@ -19,7 +19,7 @@ defmodule LinkShortener.Router do
   end
 
   get "/" do
-    send_resp(conn, 200, index_html)
+    send_resp(conn, 200, index_html())
   end
 
   get "/:code" do
@@ -42,15 +42,15 @@ defmodule LinkShortener.Router do
 
   defp index_html do
     """
-    <!DOCTYPE html>
-    <html>
-    <body>
-      <form action="/shorten_url" method="post">
-        Link to be shortened:<br>
-        <input name="url" type="text"><br>
-        <input type="submit" value="Submit">
-      </form>
-   </body>
+      <!DOCTYPE html>
+      <html>
+      <body>
+        <form action="/shorten_url" method="post">
+          Link to be shortened:<br>
+          <input name="url" type="text"><br>
+          <input type="submit" value="Submit">
+        </form>
+     </body>
     """
   end
 

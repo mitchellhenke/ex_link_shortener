@@ -4,10 +4,10 @@ defmodule LinkShortener.Mixfile do
   def project do
     [app: :link_shortener,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps()]
   end
 
   # Configuration for the OTP application
@@ -31,7 +31,7 @@ defmodule LinkShortener.Mixfile do
     [
       {:cowboy, "~> 1.0"},
       {:plug, "~> 1.0"},
-      {:con_cache, "~> 0.11.0"}
+      {:con_cache, "~> 0.12.0"},
     ]
   end
 end

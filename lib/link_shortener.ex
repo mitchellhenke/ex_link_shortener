@@ -8,7 +8,7 @@ defmodule LinkShortener do
 
     children = [
       worker(__MODULE__, [], function: :run),
-      worker(ConCache, [[
+      supervisor(ConCache, [[
           ttl: 0
         ],
         [name: :link_cache]])
