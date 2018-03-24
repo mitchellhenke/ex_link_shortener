@@ -29,7 +29,7 @@ defmodule LinkShortener.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:cowboy, "~> 1.0"},
+      {:cowboy, "~> 2.0"},
       {:plug, "~> 1.0"},
       {:con_cache, "~> 0.12.0"},
       {:distillery, "~> 1.5"}
