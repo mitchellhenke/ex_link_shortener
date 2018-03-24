@@ -1,20 +1,23 @@
 defmodule LinkShortener.Router do
   use Plug.Router
 
-  plug Plug.Parsers, parsers: [:urlencoded, :multipart]
-  plug :match
-  plug :dispatch
+  plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
+  plug(:match)
+  plug(:dispatch)
 
   post "/shorten_url" do
     base_url = Application.get_env(:link_shortener, :base_url)
-    url = Map.get(conn.params, "url", base_url)
-    |> make_url
+
+    url =
+      Map.get(conn.params, "url", base_url)
+      |> make_url
 
     code = LinkShortener.LinkDatabase.code(url)
     LinkShortener.LinkDatabase.add_link(code, url)
 
-    short_url = base_url <> "/#{code}"
-                |> make_anchor()
+    short_url =
+      (base_url <> "/#{code}")
+      |> make_anchor()
 
     send_resp(conn, 200, short_url)
   end
@@ -57,6 +60,7 @@ defmodule LinkShortener.Router do
 
   defp make_url("http" <> _rest = url), do: url
   defp make_url(url), do: "http://" <> url
+
   defp make_anchor(url) do
     """
     <a href="#{url}">#{url}</a>

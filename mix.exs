@@ -2,20 +2,24 @@ defmodule LinkShortener.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :link_shortener,
-     version: "0.0.4",
-     elixir: "~> 1.6",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :link_shortener,
+      version: "0.0.4",
+      elixir: "~> 1.6",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:runtime_tools, :logger, :cowboy, :plug, :con_cache],
-    mod: {LinkShortener, []}]
+    [
+      applications: [:runtime_tools, :logger, :cowboy, :plug, :con_cache],
+      mod: {LinkShortener, []}
+    ]
   end
 
   # Dependencies can be Hex packages:

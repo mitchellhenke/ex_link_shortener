@@ -4,8 +4,7 @@ use Mix.Config
 
 config :link_shortener, base_url: "${BASE_URL}"
 
-config :link_shortener,
-  http: [port: 4000]
+config :link_shortener, http: [port: 4000]
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
@@ -32,4 +31,4 @@ config :link_shortener,
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

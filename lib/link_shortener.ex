@@ -8,10 +8,12 @@ defmodule LinkShortener do
 
     children = [
       worker(__MODULE__, [], function: :run),
-      supervisor(ConCache, [[
+      supervisor(ConCache, [
+        [
           ttl: 0
         ],
-        [name: :link_cache]])
+        [name: :link_cache]
+      ])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -21,10 +23,11 @@ defmodule LinkShortener do
   end
 
   def run do
-    port = System.get_env("PORT")
-    |> get_port
+    port =
+      System.get_env("PORT")
+      |> get_port
 
-    {:ok, _} = Plug.Adapters.Cowboy2.http(LinkShortener.Router, [], [port: port])
+    {:ok, _} = Plug.Adapters.Cowboy2.http(LinkShortener.Router, [], port: port)
   end
 
   defp get_port(nil), do: 4000
